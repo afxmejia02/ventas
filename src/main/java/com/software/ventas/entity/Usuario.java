@@ -26,11 +26,9 @@ public class Usuario {
     
     public Usuario(Long id, String nombre, String contraseña) {
         this.nombre_usuario = nombre;
-        this.hashcontraseña = new BCryptPasswordEncoder().encode(contraseña);
+        setHashcontraseña(contraseña);
     }
-    
-
-
+      
     public String getNombre() {
         return nombre_usuario;
     }

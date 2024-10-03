@@ -56,6 +56,15 @@ public class Orden {
         setTotal();
     }
 
+    public String toString(){
+        return "Orden{"+
+        "id="+id+
+        ", fecha="+fecha+
+        ", cliente="+cliente+
+        ", total="+total+
+        "}";
+    }
+
     
     public Long getId(){
         return this.id;

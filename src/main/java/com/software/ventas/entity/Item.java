@@ -14,6 +14,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+
+
 @Getter
 @Setter
 @Entity
@@ -42,16 +44,29 @@ public class Item {
     public Item() {
     }
 
-    public Item(Integer unidades, Double subtotal, Producto producto) {
-        if (producto.getUnidades()!=0){
-        this.unidades = unidades;
-        this.subtotal = subtotal;
+    public Item(Integer unidades, Producto producto, Carrito carrito) {
+        if (producto.unidadesDisponibles() && unidades <= producto.getUnidades()){
         this.producto = producto;
+        setUnidades(unidades);
+        setCarrito(carrito);
         setSubtotal();
         }
         else {
-            System.out.println("No hay unidades disponibles del producto");}
+                throw new IllegalArgumentException("No hay unidades disponibles del producto");
+            }
     }
+
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", unidades=" + unidades +
+                ", subtotal=" + subtotal +
+                ", producto=" + producto +
+                '}';
+    }
+    
+
+
 
     public Long getId(){
         return this.id;
@@ -67,7 +82,9 @@ public class Item {
     }
 
     public void setUnidades(Integer unidades){
+        if (this.producto.unidadesDisponibles()){
         this.unidades = unidades;
+        }       
     }
 
     public Producto getProducto(){
@@ -94,8 +111,18 @@ public class Item {
         this.producto.setUnidades(this.producto.getUnidades() - this.unidades);
         }
     }
+
+    public Carrito getCarrito(){
+        return this.carrito;
+
         
     }
+
+    public void setCarrito(Carrito carrito){
+        this.carrito = carrito;
+    }
+
+}
 
 
 

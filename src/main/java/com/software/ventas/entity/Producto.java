@@ -16,6 +16,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter
 @Setter
 @Entity
@@ -78,7 +79,18 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", Precio=" + Precio + ", imagen=" + imagen + ", descripcion=" + descripcion + ", unidades=" + unidades + ", genero=" + genero + ", categoria=" + categoria + ", marca=" + marca + ", talla=" + talla + '}';
+        return "{" +
+            " id='" + getId() + "'" +
+            ", nombre='" + getNombre() + "'" +
+            ", Precio='" + getPrecio() + "'" +
+            ", imagen='" + getImagen() + "'" +
+            ", descripcion='" + getDescripcion() + "'" +
+            ", unidades='" + getUnidades() + "'" +
+            ", genero='" + getGenero() + "'" +
+            ", categoria='" + getCategoria() + "'" +
+            ", marca='" + getMarca() + "'" +
+            ", talla='" + getTalla() + "'" +
+            "}";
     }
 
     public Long getId() {

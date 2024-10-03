@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 
 import java.time.LocalDate;
 
+
 import com.software.ventas.entity.enums.TipoDocumento;
 
 import jakarta.persistence.Column;
@@ -60,6 +61,18 @@ public class Cliente extends Usuario{
         this.apellidos = apellidos;
         this.numero_documento = numero_documento;
         this.fecha_nacimiento = fecha_nacimiento;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", nombres='" + getNombres() + "'" +
+            ", apellidos='" + getApellidos() + "'" +
+            ", tipo_documento='" + getTipo_documento() + "'" +
+            ", numero_documento='" + getNumero_documento() + "'" +
+            ", fecha_nacimiento='" + getFecha_nacimiento() + "'" +
+            "}";
     }
 
 //Metodos de la clase Cliente

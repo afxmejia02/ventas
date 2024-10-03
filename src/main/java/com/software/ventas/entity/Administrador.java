@@ -31,6 +31,14 @@ public class Administrador extends Usuario {
         super(nombre, contraseña);
     }
 
+    public String toString() {
+        return "Administrador{" +
+                "id=" + id +
+                ", nombre='" + getNombre() + '\'' +
+                ", contraseña='" + getHashcontraseña() + '\'' +
+                '}';
+    }
+
     //Metodos de la clase Administrador
     //Metodo para obtener el id del administrador
     public Long getId() {

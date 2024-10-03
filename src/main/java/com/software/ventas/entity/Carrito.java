@@ -62,6 +62,17 @@ public class Carrito {
         setTotal();
     }
 
+    public String toString() {
+        return "Carrito{" +
+                "id=" + id +
+                ", items=" + items +
+                ", total=" + total +
+                ", comprado=" + comprado +
+                ", cliente=" + cliente +
+                ", orden=" + orden +
+                '}';
+    }
+
     public Long getId() {
         return this.id;
     }
