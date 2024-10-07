@@ -84,6 +84,10 @@ public class Item {
     public void setUnidades(Integer unidades){
         if (this.producto.unidadesDisponibles()){
         this.unidades = unidades;
+        setSubtotal();
+        }
+        else{
+            System.out.println("No hay unidades disponibles del producto");
         }       
     }
 
@@ -106,11 +110,15 @@ public class Item {
 
     public void setSubtotal() {
         if(this.producto != null && this.producto.unidadesDisponibles()){
-        this.subtotal = this.producto.getPrecio() * this.unidades;}
-           if(this.carrito.getComprado()){
-        this.producto.setUnidades(this.producto.getUnidades() - this.unidades);
-        }
+        this.subtotal = producto.getPrecio() * this.unidades;
     }
+    }
+
+    public void restarUnidades(){
+        if(this.carrito.getComprado()){
+            this.producto.setUnidades(this.producto.getUnidades() - this.unidades);
+            }
+        }
 
     public Carrito getCarrito(){
         return this.carrito;

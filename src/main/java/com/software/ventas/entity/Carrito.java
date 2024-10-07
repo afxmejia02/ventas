@@ -5,6 +5,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
+import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Column;
@@ -55,11 +56,11 @@ public class Carrito {
     public Carrito() {
     }
 
-    public Carrito(Boolean comprado, Cliente cliente) {
-        this.comprado = comprado;
+    public Carrito(Cliente cliente) {
         this.cliente = cliente;
-        setItems();
+        this.items = new ArrayList<>();
         setTotal();
+        setComprado(false);
     }
 
     public String toString() {
@@ -85,8 +86,12 @@ public class Carrito {
         return this.items;
     }
 
-    public void setItems() {
-        this.items = items.stream().filter(item -> item.getCarrito().getId() == getId()).toList();
+    public void setItems(List<Item> items) {
+        if (items != null) {
+            this.items = items.stream().filter(item -> item.getCarrito().getId() == getId()).toList();
+        } else {
+            this.items = new ArrayList<>(); // Si es nulo, inicializa una lista vacía
+        }
     }
 
     public Double getTotal() {
@@ -112,6 +117,18 @@ public class Carrito {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    public Orden getOrden() {
+        return this.orden;
+    }
+
+    public void setOrden() {
+        if (this.comprado) {
+            this.orden = new Orden(this);
+        } else {
+            throw new IllegalArgumentException("El carrito debe estar marcado como comprado para crear una orden.");
+        }
+     }
 
 
 

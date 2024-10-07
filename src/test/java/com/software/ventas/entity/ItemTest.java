@@ -55,6 +55,7 @@ public class ItemTest {
         
         // Recalcular subtotal y actualizar unidades
         item.setSubtotal();
+        item.restarUnidades();
         
         // El producto debe haber disminuido las unidades
         assertEquals(8, producto.getUnidades());

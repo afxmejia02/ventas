@@ -88,7 +88,7 @@ public class Orden {
     }
 
     public String setCliente(){
-        return this.cliente = this.getCarrito().getCliente().getNombre()+" "+this.getCarrito().getCliente().getApellidos();
+        return this.cliente = this.getCarrito().getCliente().getNombres()+" "+this.getCarrito().getCliente().getApellidos();
     }
 
     public Carrito getCarrito(){
