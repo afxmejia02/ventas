@@ -23,13 +23,22 @@ public class ClienteService {
         return clienteRepository.findById(id);
     }
 
-    public List<Cliente> findByNombre(String nombre) {
+    public List<Cliente> findByNombre(String nombre) {       
         return clienteRepository.findByName(nombre);
     }
     
     public boolean ingresarUsuario(String nombre, String contrasena) {
         // Buscar el cliente por nombre
-        Cliente cliente = clienteRepository.findByName(nombre).get(0);
+        List<Cliente> clientes = clienteRepository.findByName(nombre);
+
+            // Verificar si la lista está vacía
+    if (clientes.isEmpty()) {
+        // Si no se encuentra el cliente, las credenciales son inválidas
+        return false;
+    }
+
+    Cliente cliente = clientes.get(0);
+
         // Verificar si el cliente existe y la contraseña coincide
         if (cliente != null && cliente.verificarContraseña(contrasena)) {
             // Credenciales válidas
@@ -39,7 +48,15 @@ public class ClienteService {
         return false;
     }
 
-    public Cliente create(Cliente cliente) {
+    public Cliente create(Cliente cliente, String tipodocumento_String, String contrasena) {
+        TipoDocumento tipo_documento;
+        try {
+            tipo_documento = TipoDocumento.valueOf(tipodocumento_String); // Intenta convertir el String a enum
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Tipo de documento inválido: " + tipodocumento_String);
+        }
+        cliente.setTipo_documento(tipo_documento);
+        cliente.setHashcontraseña(contrasena);
         return clienteRepository.save(cliente);
     }
 

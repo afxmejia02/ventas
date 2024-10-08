@@ -11,7 +11,7 @@ import com.software.ventas.entity.Cliente;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
         // Consulta personalizada para buscar clientes por nombre
-    @Query("SELECT c FROM Cliente c WHERE c.nombre = ?1")
+    @Query("SELECT c FROM Cliente c WHERE c.nombre_usuario = ?1")
     List<Cliente> findByName(String nombre);
 }
 
