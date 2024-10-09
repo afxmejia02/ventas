@@ -65,7 +65,7 @@ public class ClienteService {
         .orElseThrow(() -> new IllegalArgumentException("Cliente no encontrado"));
 
         clienteToUpdate.setNombre_usuario(cliente.getNombre_usuario());
-        clienteToUpdate.setNombre(cliente.getNombres());
+        clienteToUpdate.setNombres(cliente.getNombres());
         clienteToUpdate.setApellidos(cliente.getApellidos());
         
         TipoDocumento tipo_documento;
