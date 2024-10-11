@@ -9,6 +9,59 @@ import org.springframework.stereotype.Service;
 import com.software.ventas.entity.Administrador;
 import com.software.ventas.repository.AdministradorRepository;
 
+/**
+ * Service class for managing {@link Administrador} entities.
+ * This class provides methods for CRUD operations and authentication for administrators.
+ * 
+ * <p>Methods:</p>
+ * <ul>
+ *   <li>{@link #findAll()}: Retrieves all administrators.</li>
+ *   <li>{@link #findById(Long)}: Retrieves an administrator by their ID.</li>
+ *   <li>{@link #findByNombre(String)}: Retrieves a list of administrators by their name.</li>
+ *   <li>{@link #ingresarUsuario(String, String)}: Validates administrator credentials.</li>
+ *   <li>{@link #create(Administrador, String)}: Creates a new administrator.</li>
+ *   <li>{@link #updateById(Long, Administrador)}: Updates an existing administrator by their ID.</li>
+ *   <li>{@link #updateContrasena(Long, String, String)}: Updates the administrator's password.</li>
+ *   <li>{@link #deleteById(Long)}: Deletes an administrator by their ID.</li>
+ * </ul>
+ * 
+ * <p>Dependencies:</p>
+ * <ul>
+ *   <li>{@link Autowired}: Indicates that a dependency should be automatically injected by Spring.</li>
+ *   <li>{@link Service}: Indicates that this class is a service component in Spring.</li>
+ * </ul>
+ * 
+ * @see Administrador
+ * @see AdministradorRepository
+ */
+
+/**
+ * Clase de servicio para gestionar entidades {@link Administrador}.
+ * Esta clase proporciona métodos para operaciones CRUD y autenticación de administradores.
+ * 
+ * <p>Métodos:</p>
+ * <ul>
+ *   <li>{@link #findAll()}: Recupera todos los administradores.</li>
+ *   <li>{@link #findById(Long)}: Recupera un administrador por su ID.</li>
+ *   <li>{@link #findByNombre(String)}: Recupera una lista de administradores por su nombre.</li>
+ *   <li>{@link #ingresarUsuario(String, String)}: Valida las credenciales del administrador.</li>
+ *   <li>{@link #create(Administrador, String)}: Crea un nuevo administrador.</li>
+ *   <li>{@link #updateById(Long, Administrador)}: Actualiza un administrador existente por su ID.</li>
+ *   <li>{@link #updateContrasena(Long, String, String)}: Actualiza la contraseña del administrador.</li>
+ *   <li>{@link #deleteById(Long)}: Elimina un administrador por su ID.</li>
+ * </ul>
+ * 
+ * <p>Dependencias:</p>
+ * <ul>
+ *   <li>{@link Autowired}: Indica que una dependencia debe ser inyectada automáticamente por Spring.</li>
+ *   <li>{@link Service}: Indica que esta clase es un componente de servicio en Spring.</li>
+ * </ul>
+ * 
+ * @see Administrador
+ * @see AdministradorRepository
+ */
+
+
 @Service
 public class AdministradorService {
     

@@ -9,6 +9,59 @@ import com.software.ventas.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service class for managing {@link Cliente} entities.
+ * This class provides methods for CRUD operations and managing clients.
+ * 
+ * <p>Methods:</p>
+ * <ul>
+ *   <li>{@link #findAll()}: Retrieves all clients.</li>
+ *   <li>{@link #findById(Long)}: Retrieves a client by its ID.</li>
+ *   <li>{@link #findByNombre(String)}: Retrieves a list of clients associated with a specific name.</li>
+ *   <li>{@link #ingresarUsuario(String, String)}: Validates user credentials for login.</li>
+ *   <li>{@link #create(Cliente, String, String)}: Creates a new client with the specified document type and password.</li>
+ *   <li>{@link #updateById(Long, Cliente, String)}: Updates an existing client by ID and document type.</li>
+ *   <li>{@link #updateContraseña(Long, String, String)}: Updates the password of a client.</li>
+ *   <li>{@link #deleteById(Long)}: Deletes a client by its ID.</li>
+ * </ul>
+ * 
+ * <p>Dependencies:</p>
+ * <ul>
+ *   <li>{@link Autowired}: Indicates that a dependency should be automatically injected by Spring.</li>
+ *   <li>{@link Service}: Indicates that this class is a service component in Spring.</li>
+ * </ul>
+ * 
+ * @see Cliente
+ * @see ClienteRepository
+ * @see TipoDocumento
+ * 
+ * Clase de servicio para gestionar entidades {@link Cliente}.
+ * Esta clase proporciona métodos para operaciones CRUD y gestión de clientes.
+ * 
+ * <p>Métodos:</p>
+ * <ul>
+ *   <li>{@link #findAll()}: Recupera todos los clientes.</li>
+ *   <li>{@link #findById(Long)}: Recupera un cliente por su ID.</li>
+ *   <li>{@link #findByNombre(String)}: Recupera una lista de clientes asociados con un nombre específico.</li>
+ *   <li>{@link #ingresarUsuario(String, String)}: Valida las credenciales del usuario para iniciar sesión.</li>
+ *   <li>{@link #create(Cliente, String, String)}: Crea un nuevo cliente con el tipo de documento y contraseña especificados.</li>
+ *   <li>{@link #updateById(Long, Cliente, String)}: Actualiza un cliente existente por ID y tipo de documento.</li>
+ *   <li>{@link #updateContraseña(Long, String, String)}: Actualiza la contraseña de un cliente.</li>
+ *   <li>{@link #deleteById(Long)}: Elimina un cliente por su ID.</li>
+ * </ul>
+ * 
+ * <p>Dependencias:</p>
+ * <ul>
+ *   <li>{@link Autowired}: Indica que una dependencia debe ser inyectada automáticamente por Spring.</li>
+ *   <li>{@link Service}: Indica que esta clase es un componente de servicio en Spring.</li>
+ * </ul>
+ * 
+ * @see Cliente
+ * @see ClienteRepository
+ * @see TipoDocumento
+ */
+
+
 @Service
 public class ClienteService {
 
@@ -28,30 +81,25 @@ public class ClienteService {
     }
     
     public boolean ingresarUsuario(String nombre, String contrasena) {
-        // Buscar el cliente por nombre
         List<Cliente> clientes = clienteRepository.findByName(nombre);
 
-            // Verificar si la lista está vacía
+        
     if (clientes.isEmpty()) {
-        // Si no se encuentra el cliente, las credenciales son inválidas
         return false;
     }
 
     Cliente cliente = clientes.get(0);
 
-        // Verificar si el cliente existe y la contraseña coincide
         if (cliente != null && cliente.verificarContraseña(contrasena)) {
-            // Credenciales válidas
             return true;
         }
-        // Credenciales inválidas
         return false;
     }
 
     public Cliente create(Cliente cliente, String tipodocumento_String, String contrasena) {
         TipoDocumento tipo_documento;
         try {
-            tipo_documento = TipoDocumento.valueOf(tipodocumento_String); // Intenta convertir el String a enum
+            tipo_documento = TipoDocumento.valueOf(tipodocumento_String); 
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Tipo de documento inválido: " + tipodocumento_String);
         }
@@ -70,7 +118,7 @@ public class ClienteService {
         
         TipoDocumento tipo_documento;
         try {
-            tipo_documento = TipoDocumento.valueOf(tipodocumento_String); // Intenta convertir el String a enum
+            tipo_documento = TipoDocumento.valueOf(tipodocumento_String); 
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Tipo de documento inválido: " + tipodocumento_String);
         }

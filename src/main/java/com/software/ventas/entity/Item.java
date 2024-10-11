@@ -1,5 +1,6 @@
 package com.software.ventas.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,8 +14,50 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Represents an item in the ventas system.
+ * This entity is mapped to the "item" table in the database.
+ * It includes details about the product, the number of units, and the subtotal cost.
+ * 
+ * Annotations:
+ * - @Entity: Specifies that the class is an entity and is mapped to a database table.
+ * - @Table: Specifies the table name in the database.
+ * - @Id: Specifies the primary key of an entity.
+ * - @GeneratedValue: Provides the specification of generation strategies for the primary keys.
+ * - @Column: Specifies the mapped column for a persistent property or field.
+ * - @ManyToOne: Defines a many-to-one relationship between this entity and another.
+ * - @JoinColumn: Specifies the foreign key column.
+ * - @JsonIgnore: Indicates that the annotated field is to be ignored by Jackson during serialization and deserialization.
+ * - @Getter and @Setter: Lombok annotations to generate getter and setter methods.
+ * - @Data: Lombok annotation to generate boilerplate code like getters, setters, toString, etc.
+ * 
+ * Fields:
+ * - id: The unique identifier for the item.
+ * - unidades: The number of units of the product.
+ * - subtotal: The subtotal cost for the item.
+ * - producto: The product associated with the item.
+ * - carrito: The shopping cart associated with the item.
+ * 
+ * Constructors:
+ * - Item(): Default constructor.
+ * - Item(Integer unidades, Producto producto, Carrito carrito): Parameterized constructor to create an item with specified units, product, and cart.
+ * 
+ * Methods:
+ * - toString(): Returns a string representation of the item.
+ * - getId(): Returns the id of the item.
+ * - setId(Long id): Sets the id of the item.
+ * - getUnidades(): Returns the number of units.
+ * - setUnidades(Integer unidades): Sets the number of units and updates the subtotal.
+ * - getProducto(): Returns the product associated with the item.
+ * - setProducto(Producto producto): Sets the product associated with the item.
+ * - getSubtotal(): Returns the subtotal cost.
+ * - setSubtotal(): Calculates and sets the subtotal cost based on the product price and units.
+ * - restarUnidades(): Deducts the units from the product if the cart is marked as purchased.
+ * - getCarrito(): Returns the shopping cart associated with the item.
+ * - setCarrito(Carrito carrito): Sets the shopping cart associated with the item.
+ */
 
-
+ 
 
 @Getter
 @Setter
@@ -37,6 +80,7 @@ public class Item {
     @JoinColumn(name = "producto_id", referencedColumnName = "id")
     private Producto producto;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "carrito_id", referencedColumnName = "id")
     private Carrito carrito;
