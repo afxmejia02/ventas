@@ -96,6 +96,16 @@ public class ClienteService {
         return false;
     }
 
+    public Cliente getClienteLogin(String nombre, String contrasena) {
+        if (ingresarUsuario(nombre, contrasena)) {
+            List<Cliente> clientes = clienteRepository.findByName(nombre);
+            return clientes.get(0);
+        }
+        else{
+            throw new IllegalArgumentException("Usuario o contraseña incorrectos"); //
+        }
+    }
+
     public Cliente create(Cliente cliente, String tipodocumento_String, String contrasena) {
         TipoDocumento tipo_documento;
         try {
@@ -125,6 +135,7 @@ public class ClienteService {
 
         clienteToUpdate.setTipo_documento(tipo_documento);
         clienteToUpdate.setNumero_documento(cliente.getNumero_documento());
+        clienteToUpdate.setFecha_nacimiento(cliente.getFecha_nacimiento());
         return clienteRepository.save(clienteToUpdate);
     }
 

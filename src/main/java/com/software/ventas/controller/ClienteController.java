@@ -96,8 +96,8 @@ public class ClienteController {
     }
 
     @GetMapping("/ingresar")
-    public boolean ingresarUsuario(@RequestParam String nombre, @RequestParam String contrasena) {
-        return clienteService.ingresarUsuario(nombre, contrasena);
+    public Cliente ingresarUsuario(@RequestParam String nombre, @RequestParam String contrasena) {
+        return clienteService.getClienteLogin(nombre, contrasena);
     }
 
     @PostMapping("/create")
