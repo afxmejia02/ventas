@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = "https://tu-servidor.com/items";
+const url = "https://manifest-emblem-437615-g9.rj.r.appspot.com/items";
 
 // Obtener todos los ítems
 export const getItems = () => {
