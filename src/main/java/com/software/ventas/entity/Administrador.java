@@ -96,6 +96,9 @@ public class Administrador extends Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
+    public Administrador() {
+    }
+
     public Administrador(String nombre, String contraseña) {
         super(nombre, contraseña);
     }

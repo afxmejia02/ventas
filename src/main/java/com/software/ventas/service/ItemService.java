@@ -92,6 +92,10 @@ public class ItemService {
         return itemRepository.findByCarritoId(carritoId);
     }
 
+    public List<Item> findByCarritoComprado(Boolean carritoComprado) {
+        return itemRepository.findByCarritoComprado(carritoComprado);
+    }
+
     public List<Item> findByProductoId(Long productoId) {
         return itemRepository.findByProductoId(productoId);
     }

@@ -90,6 +90,11 @@ public class ItemController {
         return itemService.findByCarritoId(carritoId);
     }
 
+    @GetMapping("/carrito/comprado/{carritoComprado}")
+    public List<Item> findByCarritoComprado(@PathVariable Boolean carritoComprado) {
+        return itemService.findByCarritoComprado(carritoComprado);
+    }
+
     @GetMapping("/producto/{productoId}")
     public List<Item> findByProductoId(@PathVariable Long productoId) {
         return itemService.findByProductoId(productoId);
