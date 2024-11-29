@@ -49,4 +49,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     @Query("SELECT i FROM Item i WHERE i.producto.id = ?1")
     List<Item> findByProductoId(Long productoId);
 
+    @Query("SELECT i FROM Item i WHERE i.carrito.comprado = ?1")
+    List<Item> findByCarritoComprado(Boolean carritoComprado);
+
 }

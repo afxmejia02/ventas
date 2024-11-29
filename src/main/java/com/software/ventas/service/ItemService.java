@@ -92,6 +92,10 @@ public class ItemService {
         return itemRepository.findByCarritoId(carritoId);
     }
 
+    public List<Item> findByCarritoComprado(Boolean carritoComprado) {
+        return itemRepository.findByCarritoComprado(carritoComprado);
+    }
+
     public List<Item> findByProductoId(Long productoId) {
         return itemRepository.findByProductoId(productoId);
     }
@@ -112,8 +116,9 @@ public class ItemService {
     }
 
     public Item update(Long id, Integer unidades, Long producto_id, Long carrito_id) {
-        Optional<Item> itemOptional = itemRepository.findById(id);
-        Item itemActualizado = itemOptional.get();
+        Item itemActualizado = itemRepository.findById(id)
+        .orElseThrow(() -> new IllegalArgumentException("Item no encontrado con el ID: " + id));
+    
         Producto producto = productoService.findById(producto_id)
                 .orElseThrow(() -> new IllegalArgumentException("Producto no encontrado"));
 
